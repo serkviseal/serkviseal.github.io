@@ -9,8 +9,13 @@ jQuery(document).ready(function($) {
 	"use strict";
 
 	
-	// $(".loader").delay(1000).fadeOut("slow");
- //  $("#overlayer").delay(1000).fadeOut("slow");	
+	var loader = function() {
+		setTimeout(function() {
+			TweenMax.to('.site-loader-wrap', 1, { marginTop: 50, autoAlpha: 0, ease: Power4.easeInOut });
+	  }, 10);
+	  $(".site-loader-wrap").delay(200).fadeOut("slow");
+		$("#unslate_co--overlayer").delay(200).fadeOut("slow");	
+	}	
   
 
 	var siteMenuClone = function() {
@@ -91,6 +96,19 @@ jQuery(document).ready(function($) {
 		});
 	}; 
 	siteMenuClone();
+
+	//counter
+	$('.number').each(function () {
+		$(this).prop('Counter',0).animate({
+			Counter: $(this).text()
+		}, {
+			duration: 2000,
+			easing: 'swing',
+			step: function (now) {
+				$(this).text(Math.ceil(now));
+			}
+		});
+	});
 
 
 	var sitePlusMinus = function() {
